@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration debug="true">
+<!--
+    org.apache.log4j.ConsoleAppender（控制台），
+    org.apache.log4j.FileAppender（文件），
+    org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件），
+    org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件），
+    org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）
+ -->
+    <appender name="CONSOLE-APPENDER" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8" />
+        <param name="threshold" value="debug"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %-32t - %m%n" />
+        </layout>
+    </appender>
+    <appender name="DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="./logs/default.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="debug"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %-32t - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="./logs/error.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="error"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %-32t - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="HOSPITAL-WEB" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="./logs/web.log" />
+        <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+        <param name="threshold" value="debug" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %-32t - %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="com.learn.springbootdemo" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="HOSPITAL-WEB" />
+        <appender-ref ref="ERROR-APPENDER" />
+    </logger>
+
+    <root>
+        <level value="debug" />
+        <appender-ref ref="CONSOLE-APPENDER" />
+        <appender-ref ref="ERROR-APPENDER" />
+        <appender-ref ref="DEFAULT-APPENDER" />
+    </root>
+
+</log4j:configuration>
