@@ -1,0 +1,3 @@
+my.local.db-url: dskadas
+server:
+  port: 7777
