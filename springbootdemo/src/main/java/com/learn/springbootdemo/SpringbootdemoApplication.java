@@ -19,6 +19,8 @@ public class SpringbootdemoApplication {
         GetPropertyConfig config= binder.bind("my.local", Bindable.of(GetPropertyConfig.class)).get();
 
         System.out.println(config.getDburl());
+
+
     }
 
 }
