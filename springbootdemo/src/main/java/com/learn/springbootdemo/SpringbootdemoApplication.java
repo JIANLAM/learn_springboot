@@ -16,12 +16,10 @@ public class SpringbootdemoApplication {
 
         Binder binder = Binder.get(context.getEnvironment());
 
-        GetPropertyConfig config= binder.bind("my.local", Bindable.of(GetPropertyConfig.class)).get();
+        GetPropertyConfig config = binder.bind("my.local", Bindable.of(GetPropertyConfig.class)).get();
 
         System.out.println(config.getDburl());
 
-
     }
-
 }
 
